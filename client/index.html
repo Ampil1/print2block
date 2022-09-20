@@ -1,0 +1,27 @@
+<!-- ./client/index.html -->
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>Ampil</title>
+  </head>
+  <body>
+    <button onClick="sendMsg()">Say Hi</button>
+
+    <script src="/socket.io/socket.io.js"></script>
+    <script>
+      const socket = io("http://localhost:4000").connect();
+
+      function sendMsg() {
+        let userObject={
+            "id":"558f755a-779a-4c78-bfb3-4d655ab45935",
+            "meassage":"Hi",
+            "user":"Ampil"
+        }
+        socket.emit("chat-to-user", userObject);
+      }
+    </script>
+  </body>
+</html>
